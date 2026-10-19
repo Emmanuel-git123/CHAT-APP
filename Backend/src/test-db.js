@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const pool = require("./db");
+const pool = require("../config/db");
 
 async function main() {
   try {

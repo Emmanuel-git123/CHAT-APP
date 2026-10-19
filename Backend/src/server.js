@@ -3,7 +3,9 @@ const http = require("http");
 const express = require("express");
 const cors = require("cors");
 const { Server } = require("socket.io");
-const pool = require("./db");
+const pool = require("../config/db");
+const authRoutes = require('./Routes/auth');
+
 
 const PORT = process.env.PORT||5000;
 const FRONTEND_URL=process.env.FRONTEND_URL;
@@ -11,6 +13,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api/auth", authRoutes);
 
 app.get("/health", (req, res) => {
   res.json({status: "ok"});
